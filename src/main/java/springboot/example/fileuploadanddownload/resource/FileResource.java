@@ -36,10 +36,10 @@ public class FileResource {
     @PostMapping("/upload")
     public ResponseEntity<List<String>> uploadFiles(@RequestParam("files")List<MultipartFile> multipartFiles) throws IOException {
         List<String> filenames = new ArrayList<>();
-        for(MultipartFile file : multipartFiles) {
-            String filename = StringUtils.cleanPath(file.getOriginalFilename());
+        for(MultipartFile multipartFile : multipartFiles) {
+            String filename = StringUtils.cleanPath(multipartFile.getOriginalFilename());
             Path fileStorage = get(DIRECTORY, filename).toAbsolutePath().normalize();
-            copy(file.getInputStream(), fileStorage, REPLACE_EXISTING);
+            copy(multipartFile.getInputStream(), fileStorage, REPLACE_EXISTING);
             filenames.add(filename);
         }
         return ResponseEntity.ok().body(filenames);

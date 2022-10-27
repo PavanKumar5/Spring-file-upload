@@ -28,7 +28,7 @@ import static org.springframework.http.HttpHeaders.CONTENT_DISPOSITION;
 
 @RestController
 @RequestMapping("/file")
-public class FileResource {
+public class FileResource1 {
     // define a location
     public static final String DIRECTORY = System.getProperty("user.home") + "/Downloads";
 
